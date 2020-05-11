@@ -1,7 +1,6 @@
 <template>
     <v-container
         fluid
-        :class="container"
     >
         <h1 class="txtHead">Qrary Unpad</h1>
         <div class="banner">
@@ -78,10 +77,6 @@ export default {
     h2.txtHead{
         margin-top: 20px;
         margin-bottom: 10px;
-    }
-    .container{
-        padding-top: 20px;
-        padding-left: 23px;
     }
     .banner{
         height: 276px;

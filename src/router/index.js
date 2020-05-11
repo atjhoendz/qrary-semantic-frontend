@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import About from '../components/About';
 import ListBooks from '../components/ListBooks';
+import BookDetail from '../components/BookDetail';
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,14 @@ const routes = [{
         component: ListBooks,
         meta: {
             title: 'Pencarian'
+        }
+    },
+    {
+        path: '/details/:isbn',
+        name: 'details',
+        component: BookDetail,
+        meta: {
+            title: 'Detail Buku'
         }
     }
 ];
