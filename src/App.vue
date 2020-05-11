@@ -5,7 +5,10 @@
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
     >
-      <v-list dense>
+      <v-list 
+        dense
+        :style="{'padding-top':'0px'}"
+      >
         <template v-for="item in items">
           <v-row
             v-if="item.heading"
@@ -61,6 +64,7 @@
             :key="item.text"
             :to="item.link"
             link
+            active-class="activeSideBar"
           >
             <v-list-item-action>
               <v-icon>{{ item.icon }}</v-icon>
@@ -78,21 +82,22 @@
     <v-app-bar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       app
-      color="white"
+      color="#083E77"
+      dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <span>{{ appName }}</span>
+        <img :src="linkLogo" alt="Qrary Semantic" width="130px" height="50px">
       </v-toolbar-title>
       <v-text-field
         flat
         solo-inverted
         hide-details
         prepend-inner-icon="mdi-magnify"
-        label="Search"
+        label="Cari Buku"
         class="hidden-sm-and-down"
       ></v-text-field>
       <v-spacer></v-spacer>
@@ -109,14 +114,26 @@
       source: String,
     },
     data: () => ({
-      appName: 'Qrary Semantic',
       dialog: false,
       drawer: null,
+      linkLogo: require('./assets/logoQrary.svg'),
       items: [
-        { icon: 'mdi-information', text: 'About', link: '/' },
-        { icon: 'mdi-magnify',text: 'Pencarian', link: '/search' },
-        { icon: 'mdi-help-circle', text: 'Help' },
+        { icon: 'mdi-information', text: 'Tentang', link: '/' },
+        { icon: 'mdi-magnify',text: 'Pencarian', link: '/search' }
       ]
     }),
+    watch: {
+      '$route' (to) {
+        document.title = to.meta.title + ' | Qrary' || 'Qrary'
+      }
+    }
   }
 </script>
+
+<style>
+  .activeSideBar{
+    /* color: red !important; */
+    background-color: #F6A113 !important;
+    color: white !important;
+  }
+</style>

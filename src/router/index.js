@@ -8,12 +8,18 @@ Vue.use(VueRouter);
 const routes = [{
         path: '/',
         name: 'about',
-        component: About
+        component: About,
+        meta: {
+            title: 'Tentang'
+        }
     },
     {
         path: '/search',
         name: 'search',
-        component: ListBooks
+        component: ListBooks,
+        meta: {
+            title: 'Pencarian'
+        }
     }
 ];
 
