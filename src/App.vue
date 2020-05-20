@@ -105,6 +105,57 @@
     <v-content>
       <router-view />
     </v-content>
+    <v-btn
+      bottom
+      color="#F6A113"
+      dark
+      fab
+      fixed
+      right
+      @click="dialog = !dialog"
+      class="hidden-lg-and-up"
+    >
+      <v-icon>mdi-magnify</v-icon>
+    </v-btn>
+    <v-dialog
+      v-model="dialog"
+      width="800px"
+    >
+      <v-card>
+        <v-card-title class="headerCari">
+          Cari Buku
+        </v-card-title>
+        <v-container>
+          <v-row class="mx-2">
+            <v-col
+              class="align-center justify-space-between"
+              cols="12"
+            >
+              <v-row
+                align="center"
+                class="mr-0"
+              >
+                <v-text-field
+                  label="Keyword"
+                ></v-text-field>
+              </v-row>
+            </v-col>
+          </v-row>
+        </v-container>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            @click="dialog = false"
+          >Batal</v-btn>
+          <v-btn
+            text
+            color="#083E77"
+            @click="dialog = false"
+          >Cari</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -135,5 +186,11 @@
     /* color: red !important; */
     background-color: #F6A113 !important;
     color: white !important;
+  }
+  .headerCari{
+    background-color: #083E77;
+    border-color: #083E77;
+    color: white;
+    caret-color: white;
   }
 </style>
