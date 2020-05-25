@@ -8,7 +8,7 @@
   <h2 align="center">Qrary Semantic</h2>
 
   <p align="center">
-    Qrary is a lorem ipsum dolor sit amet blabalbalbalbal balbele
+    Qrary semantic is a website version from Qrary Android Mobile application, which in this application we apply SPARQL with RDF turtle for the database technology. The main function of this website is to search the book in the database using semantic system. The applying of semantic is the innovation we add from the mobile version.
     <br />
     <a href="https://qrary-semantic.herokuapp.com/"><strong><span style="font-size:20px">View Demo »</span></strong></a>
     <br />
@@ -32,7 +32,7 @@
 * [Contact](#contact)
 
 ## About The Project
-
+### Overview
 [![About][about-screenshot]]()
 [![Halaman Pencarian][hal-cari-screenshot]]()
 [![Hasil Pencarian][hasil-cari-screenshot]]()
