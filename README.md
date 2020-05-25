@@ -1,10 +1,8 @@
-<!-- # Qrary Semantic (frontend) -->
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/atjhoendz/qrary-semantic-frontend">
-    <img src="public/img/icons/android-chrome-maskable-512x512.png" alt="Logo" width="80" height="80">
+    <img src="public/img/icons/android-chrome-maskable-512x512.png" alt="Logo" width="100" height="100">
   </a>
 
   <h2 align="center">Qrary Semantic</h2>
@@ -12,7 +10,7 @@
   <p align="center">
     Qrary is a lorem ipsum dolor sit amet blabalbalbalbal balbele
     <br />
-    <a href="https://qrary-semantic.herokuapp.com/"><strong>View Demo »</strong></a>
+    <a href="https://qrary-semantic.herokuapp.com/"><strong><span style="font-size:20px">View Demo »</span></strong></a>
     <br />
     <br />
 </p>
@@ -29,11 +27,9 @@
     * [Setup Backend Service](#setup-backend-service)
     * [Setup Frontend Service](#setup-frontend-service)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
+* [Dataset Schema](#dataset-schema)
+* [Development Progress](#development-progress)
 * [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
 
 ## About The Project
 
@@ -48,10 +44,12 @@
 * [Jena Fuseki](https://jena.apache.org/documentation/fuseki2/)
 
 ## Getting Started
+
 ### Prerequisites
-    Pastikan environment kamu terinstall :
+    Make sure your environment has ready by installing these down below:
     - Docker
-    - Node 12.0 and up
+    - Node 12 and up
+
 ### Installation
 
 To run project locally :
@@ -70,6 +68,15 @@ cd qrary-jena-fuseki-service
 docker-compose up -d
 ```
 4. The service will be run on [http://localhost:3030](http://localhost:3030)
+
+### Upload Dataset
+1. Go to Jena Fuseki Service [http://localhost:3030](http://localhost:3030)
+2. Click **manage dataset**
+3. Add new Dataset with name **qrary**
+4. Choose Dataset Type = Persistent
+5. Upload the ttl file to the dataset
+> turtle file: [https://raw.githubusercontent.com/atjhoendz/qrary-jena-fuseki-service/master/dataset/qrary.ttl](https://raw.githubusercontent.com/atjhoendz/qrary-jena-fuseki-service/master/dataset/qrary.ttl)
+6. Wait until upload data success
 
 ### Setup Backend Service
 1. Clone [https://github.com/atjhoendz/qrary-semantic-backend](https://github.com/atjhoendz/qrary-semantic-backend)
@@ -112,6 +119,30 @@ npm install
 npm run serve
 ```
 5. The service will be run on [http://localhost:8080](http://localhost:8080)
+
+## Usage
+1. Open frontend service 
+> local: [http://localhost:8080](http://localhost:8080) <br>
+> demo: [https://qrary-semantic.herokuapp.com/](https://qrary-semantic.herokuapp.com/)
+2. Go to **Pencarian** menu
+3. Search your favorite book at the search bar (ex: Laskar Pelangi)
+
+## Dataset Schema
+coming soon..
+
+## Development Progress
+- [x] Create mockup layout
+- [x] Implement frontend layout
+- [x] Setup jena fuseki
+- [x] Setup Backend API
+- [x] Get All Data
+- [ ] Get Spesific Book Data
+- [ ] Search Book
+
+## Contact
+- Mohamad Achun Armando - [achunarmando@gmail.com](mailto:achunarmando@gmail.com)
+- Arif Rhizky Gilang - [rmkspls@mail.com](mailto:rmkspls@gmail.com)
+- Refa Annisatul Ilma - [refaands@gmail.com](mailto:refaands@gmail.com)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
