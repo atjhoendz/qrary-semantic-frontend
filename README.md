@@ -124,8 +124,9 @@ npm run serve
 1. Open frontend service 
 > local: [http://localhost:8080](http://localhost:8080) <br>
 > demo: [https://qrary-semantic.herokuapp.com/](https://qrary-semantic.herokuapp.com/)
-2. Go to **Pencarian** menu
-3. Search your favorite book at the search bar (ex: Laskar Pelangi)
+2. Open it in Mobile Device and Add to home screen (recommended)
+3. Go to **Pencarian** menu
+4. Search your favorite book at the search bar (ex: Laskar Pelangi)
 
 ## Dataset Schema
 coming soon..
