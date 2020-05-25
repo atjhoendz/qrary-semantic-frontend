@@ -97,7 +97,7 @@ docker-compose up -d
 ```
 or
 ```sh
-make run
+make rundev
 ```
 5. The service will be run on [http://localhost:3000/api](http://localhost:3000/api)
 
