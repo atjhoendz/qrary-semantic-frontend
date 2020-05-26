@@ -3,21 +3,13 @@
         fluid
         :class="container"
       >
-        <div class="text-center">
-          <v-snackbar
-            v-model="snackbar"
-          >
-            {{ message }}
-            <v-btn
-              color="#F6A113"
-              text
-              @click="snackbar = false"
-            >
-              Close
-            </v-btn>
-          </v-snackbar>
-        </div>
         <h2 class="txtHead2">Daftar Buku</h2>
+        <div class="text-center"
+          v-if="loading == false && error == true"
+        >
+          <p>Dataset kosong, silahkan upload dataset terlebih dahulu di sini <a href="https://qrary-fuseki-service.herokuapp.com/" target="_blank">https://qrary-fuseki-service.herokuapp.com/</a></p>
+          <a href="https://github.com/atjhoendz/qrary-semantic-frontend#upload-dataset" target="_blank">Bantuan</a>
+        </div>
         <v-row
           v-if="loading == true"
         >
@@ -112,8 +104,8 @@ export default {
         .get('https://qrary-semantic-backend.herokuapp.com/api/getall')
         .then(response => {
           if (response.data.success == false) {
-            this.message = 'Data tidak berhasil didapatkan';
-            this.snackbar = true;
+            this.loading = false;
+            this.error = true;
           } else {
             this.books = response.data.data;
             this.loading = false;
