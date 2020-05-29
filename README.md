@@ -25,6 +25,7 @@
   * [Installation](#installation)
     * [Setup Jena Fuseki Service](#setup-jena-fuseki-service)
     * [Setup Backend Service](#setup-backend-service)
+    * [API Documentation](#api-documentation)
     * [Setup Frontend Service](#setup-frontend-service)
 * [Usage](#usage)
 * [Dataset Schema](#dataset-schema)
@@ -100,6 +101,10 @@ or
 make rundev
 ```
 5. The service will be run on [http://localhost:3000/api](http://localhost:3000/api)
+
+### API Documentation
+
+[https://documenter.getpostman.com/view/10257401/SztD4Sg6](https://documenter.getpostman.com/view/10257401/SztD4Sg6)
 
 ### Setup Frontend Service
 1. Clone https://github.com/atjhoendz/qrary-semantic-frontend

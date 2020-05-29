@@ -19,9 +19,7 @@
         <h2 class="txtHead">Creator</h2>
         <v-row>
             <v-col cols='12'>
-                <v-row
-                    justify="left"
-                >
+                <v-row>
                     <div 
                         v-for="creator in creators" 
                         :key="creator.nama"

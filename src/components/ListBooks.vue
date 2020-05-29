@@ -1,9 +1,9 @@
 <template>
     <v-container
         fluid
-        :class="container"
       >
-        <h2 class="txtHead2">Daftar Buku</h2>
+        <h2 class="txtHead2">{{ textHeader }}</h2>
+        <p>{{ cekKosong() }}</p>
         <div class="text-center"
           v-if="loading == false && error == true"
         >
@@ -19,9 +19,7 @@
             cols="6"
             md="2"
           >
-            <v-row
-              justify="left"
-            >
+            <v-row>
               <v-skeleton-loader
                 class="mx-3 mb-4"
                 width="190"
@@ -40,9 +38,7 @@
             cols='6'
             md='2'
           >
-            <v-row
-              justify="left"
-            >
+            <v-row>
               <v-card
                 class="mx-3 mb-4"
                 max-width="190"
@@ -83,34 +79,62 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     name: 'ListBooks',
-
+    props: {
+      resultBooks: Array
+    },
     data:() => ({
         coverBookDefault: require('../assets/book_cover_default.jpg'),
         books: [],
-        loading: true,
+        loading: false,
         error: false,
         message: '',
-        snackbar: false
+        snackbar: false,
+        textHeader: 'Daftar Buku'
     }),
+    computed: {
+      bookState() {
+        return this.$store.getters['all']
+      },
+      ...mapGetters([
+        'all'
+      ])
+    },
     methods: {
+      cekKosong() {
+        if (!Object.keys(this.bookState).length) {
+          // console.log(Object.keys(this.bookState).length);
+          return 'Data buku tidak ditemukan';
+        }
+      },
       gotoDetail(isbn) {
         this.$router.push({name:'details', params: {isbn: isbn}});
       }
     },
     mounted() {
-      this.$axios
-        .get('https://qrary-semantic-backend.herokuapp.com/api/getall')
-        .then(response => {
-          if (response.data.success == false) {
-            this.loading = false;
-            this.error = true;
-          } else {
-            this.books = response.data.data;
-            this.loading = false;
-          }
-        });
+      // if ( !Object.keys(this.bookState).length ) {
+      //   this.$axios
+      //     .get('https://qrary-semantic-backend.herokuapp.com/api/books')
+      //     .then(response => {
+      //       if (response.data.success == false) {
+      //         this.loading = false;
+      //         this.error = true;
+      //       } else {
+      //         this.books = response.data.data;
+      //         this.loading = false;
+      //       }
+      //     });
+      // } else {
+      //   this.loading = false;
+      // }
+    },
+    watch: {
+      bookState(val) {
+        this.books = val;
+      }
     }
 }
 </script>

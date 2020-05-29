@@ -99,10 +99,21 @@
         prepend-inner-icon="mdi-magnify"
         label="Cari Buku"
         class="hidden-sm-and-down"
+        v-model="keyCari"
+        @keyup.enter.native="cariBuku"
       ></v-text-field>
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-content>
+      <div class="text-center"
+        v-if="loading == true"
+      >
+        <v-progress-circular
+          :size="50"
+          color="primary"
+          indeterminate
+        ></v-progress-circular>
+      </div>
       <router-view />
     </v-content>
     <v-btn
@@ -160,6 +171,8 @@
 </template>
 
 <script>
+  import { mapMutations } from 'vuex';
+
   export default {
     props: {
       source: String,
@@ -171,11 +184,35 @@
       items: [
         { icon: 'mdi-information', text: 'Tentang', link: '/' },
         { icon: 'mdi-magnify',text: 'Pencarian', link: '/search' }
-      ]
+      ],
+      keyCari: '',
+      loading: false
     }),
     watch: {
       '$route' (to) {
-        document.title = to.meta.title + ' | Qrary' || 'Qrary'
+        document.title = to.meta.title + ' | Qrary' || 'Qrary';
+        if (to.name == 'search'){
+          this.cariBuku();
+        }
+      }
+    },
+    methods: {
+      ...mapMutations([
+        'searchResults'
+      ]),
+      cariBuku() {
+        if (this.$route.name != 'search') {
+          return this.$router.push({name: 'search'});
+        }
+        this.loading = true;
+        this.$axios
+          .get(`https://qrary-semantic-backend.herokuapp.com/api/books${this.keyCari ? '?judul='+this.keyCari : ''}`)
+          .then(response => {
+            // Set State
+            this.searchResults(response.data.data);
+            this.loading = false;
+          });
+          
       }
     }
   }
