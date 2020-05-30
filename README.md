@@ -150,7 +150,7 @@ npm run serve
 - [x] Get all book data
 - [x] Get spesific book data
 - [x] Search book
-- [ ] Advanced search book
+- [x] Advanced search book
 
 ## Contact
 - Mohamad Achun Armando - [achunarmando@gmail.com](mailto:achunarmando@gmail.com)
