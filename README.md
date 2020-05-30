@@ -146,10 +146,10 @@ npm run serve
 - [x] Create mockup layout
 - [x] Implement frontend layout
 - [x] Setup jena fuseki
-- [x] Setup Backend API
-- [x] Get All Data
-- [x] Get Spesific Book Data
-- [x] Search Book
+- [x] Setup backend API
+- [x] Get all book data
+- [x] Get spesific book data
+- [x] Search book
 - [ ] Advanced search book
 
 ## Contact
