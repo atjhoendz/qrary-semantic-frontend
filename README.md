@@ -142,8 +142,9 @@ coming soon..
 - [x] Setup jena fuseki
 - [x] Setup Backend API
 - [x] Get All Data
-- [ ] Get Spesific Book Data
-- [ ] Search Book
+- [x] Get Spesific Book Data
+- [x] Search Book
+- [ ] Advanced search book
 
 ## Contact
 - Mohamad Achun Armando - [achunarmando@gmail.com](mailto:achunarmando@gmail.com)
