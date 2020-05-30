@@ -191,9 +191,12 @@
     watch: {
       '$route' (to) {
         document.title = to.meta.title + ' | Qrary' || 'Qrary';
-        if (to.name == 'search'){
+        if (to.name == 'search' && this.keyCari != ''){
           this.cariBuku();
         }
+      },
+      keyCari() {
+        this.cariBuku();
       }
     },
     methods: {

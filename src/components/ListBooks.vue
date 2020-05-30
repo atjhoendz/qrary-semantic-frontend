@@ -3,7 +3,7 @@
         fluid
       >
         <h2 class="txtHead2">{{ textHeader }}</h2>
-        <p>{{ cekKosong() }}</p>
+        <p>{{ isKosong ? 'Data buku tidak ditemukan':'' }}</p>
         <div class="text-center"
           v-if="loading == false && error == true"
         >
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
     name: 'ListBooks',
@@ -89,11 +89,12 @@ export default {
     data:() => ({
         coverBookDefault: require('../assets/book_cover_default.jpg'),
         books: [],
-        loading: false,
+        loading: true,
         error: false,
         message: '',
         snackbar: false,
-        textHeader: 'Daftar Buku'
+        textHeader: 'Daftar Buku',
+        isKosong: false
     }),
     computed: {
       bookState() {
@@ -104,36 +105,39 @@ export default {
       ])
     },
     methods: {
-      cekKosong() {
-        if (!Object.keys(this.bookState).length) {
-          // console.log(Object.keys(this.bookState).length);
-          return 'Data buku tidak ditemukan';
-        }
-      },
+      ...mapMutations([
+        'searchResults'
+      ]),
       gotoDetail(isbn) {
         this.$router.push({name:'details', params: {isbn: isbn}});
       }
     },
     mounted() {
-      // if ( !Object.keys(this.bookState).length ) {
-      //   this.$axios
-      //     .get('https://qrary-semantic-backend.herokuapp.com/api/books')
-      //     .then(response => {
-      //       if (response.data.success == false) {
-      //         this.loading = false;
-      //         this.error = true;
-      //       } else {
-      //         this.books = response.data.data;
-      //         this.loading = false;
-      //       }
-      //     });
-      // } else {
-      //   this.loading = false;
-      // }
+      if ( !Object.keys(this.bookState).length ) {
+        this.$axios
+          .get('https://qrary-semantic-backend.herokuapp.com/api/books')
+          .then(response => {
+            if (response.data.success == false) {
+              this.loading = false;
+              this.error = true;
+            } else {
+              this.searchResults(response.data.data);
+              this.loading = false;
+            }
+          });
+      } else {
+        this.books = this.$store.getters['all'];
+        this.loading = false;
+      }
     },
     watch: {
-      bookState(val) {
-        this.books = val;
+      bookState(newVal) {
+        if(Object.keys(newVal).length == 0){
+          this.isKosong = true;
+        } else {
+          this.isKosong = false;
+        }
+        this.books = newVal;
       }
     }
 }
