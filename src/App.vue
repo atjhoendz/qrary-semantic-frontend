@@ -147,7 +147,8 @@
                 class="mr-0"
               >
                 <v-text-field
-                  label="Keyword"
+                  label="Judul Buku"
+                  v-model="keyCariJudul"
                 ></v-text-field>
               </v-row>
             </v-col>
@@ -162,7 +163,7 @@
           <v-btn
             text
             color="#083E77"
-            @click="dialog = false"
+            @click="dialog = false; cariBuku(keyCariJudul);"
           >Cari</v-btn>
         </v-card-actions>
       </v-card>
@@ -186,30 +187,37 @@
         { icon: 'mdi-magnify',text: 'Pencarian', link: '/search' }
       ],
       keyCari: '',
-      loading: false
+      loading: false,
+      keyCariJudul: ''
     }),
     watch: {
       '$route' (to) {
         document.title = to.meta.title + ' | Qrary' || 'Qrary';
         if (to.name == 'search' && this.keyCari != ''){
-          this.cariBuku();
+          this.cariBuku(this.keyCari);
         }
       },
       keyCari() {
-        this.cariBuku();
+        this.cariBuku(this.keyCari);
+      },
+      dialog(newVal) {
+        if (this.$route.name != 'search' && newVal) {
+          return this.$router.push({name: 'search'});
+        }
       }
     },
     methods: {
       ...mapMutations([
         'searchResults'
       ]),
-      cariBuku() {
+      cariBuku(key) {
         if (this.$route.name != 'search') {
           return this.$router.push({name: 'search'});
         }
+
         this.loading = true;
         this.$axios
-          .get(`https://qrary-semantic-backend.herokuapp.com/api/books${this.keyCari ? '?judul='+this.keyCari : ''}`)
+          .get(`https://qrary-semantic-backend.herokuapp.com/api/books${key ? '?judul='+key : ''}`)
           .then(response => {
             // Set State
             this.searchResults(response.data.data);
