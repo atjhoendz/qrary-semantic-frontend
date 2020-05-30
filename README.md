@@ -71,7 +71,9 @@ docker-compose up -d
 4. The service will be run on [http://localhost:3030](http://localhost:3030)
 
 ### Upload Dataset
-1. Go to Jena Fuseki Service [http://localhost:3030](http://localhost:3030)
+1. Go to Jena Fuseki Service <br>
+> local : [http://localhost:3030](http://localhost:3030) <br>
+> Demo : [https://qrary-fuseki-service.herokuapp.com/](https://qrary-fuseki-service.herokuapp.com/)
 2. Click **manage dataset**
 3. Add new Dataset with name **qrary**
 4. Choose Dataset Type = Persistent
@@ -102,6 +104,8 @@ make rundev
 ```
 5. The service will be run on [http://localhost:3000/api](http://localhost:3000/api)
 
+> Demo backend: [https://qrary-semantic-backend.herokuapp.com/api](https://qrary-semantic-backend.herokuapp.com/api)
+
 ### API Documentation
 
 [https://documenter.getpostman.com/view/10257401/SztD4Sg6](https://documenter.getpostman.com/view/10257401/SztD4Sg6)
@@ -125,6 +129,8 @@ npm run serve
 ```
 5. The service will be run on [http://localhost:8080](http://localhost:8080)
 
+> Demo Frontend: [https://qrary-semantic.herokuapp.com/](https://qrary-semantic.herokuapp.com/)
+
 ## Usage
 1. Open frontend service 
 > local: [http://localhost:8080](http://localhost:8080) <br>
@@ -134,7 +140,7 @@ npm run serve
 4. Search your favorite book at the search bar (ex: Laskar Pelangi)
 
 ## Dataset Schema
-coming soon..
+[![Dataset Schema][qrary-schema]]()
 
 ## Development Progress
 - [x] Create mockup layout
@@ -157,3 +163,4 @@ coming soon..
 [hal-cari-screenshot]: screenshots/Halaman-Pencarian.png
 [hasil-cari-screenshot]: screenshots/Hasil-Pencarian.png
 [detail-buku-screenshot]: screenshots/Detail-Buku.png
+[qrary-schema]: screenshots/qrary-turtle-schema.png
