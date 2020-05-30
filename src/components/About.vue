@@ -14,7 +14,9 @@
         </p>
 
         <h2 class="txtHead">Fitur</h2>
-        <p class="txtDesc">Untuk saat ini, Qrary sesi web baru mendukung untuk pencarian buku.</p>
+        <p class="txtDesc">
+            Untuk saat ini, Qrary sesi web baru mendukung untuk pencarian buku.
+        </p>
 
         <h2 class="txtHead">Creator</h2>
         <v-row>
