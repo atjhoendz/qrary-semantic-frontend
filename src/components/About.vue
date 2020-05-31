@@ -15,10 +15,13 @@
 
         <h2 class="txtHead">Fitur</h2>
         <p class="txtDesc">
-            Untuk saat ini, Qrary sesi web baru mendukung untuk pencarian buku.
+            <ul>
+                <li>Pencarian buku berdasarkan judul buku.</li>
+                <li>Pencarian tingkat lanjut berdasarkan judul, isbn, penerbit, penulis buku secara bersamaan.</li>
+            </ul>
         </p>
 
-        <h2 class="txtHead">Creator</h2>
+        <h2 class="txtHead">Pengembang</h2>
         <v-row>
             <v-col cols='12'>
                 <v-row>
