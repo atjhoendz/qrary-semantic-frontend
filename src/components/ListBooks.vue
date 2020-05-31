@@ -41,7 +41,7 @@
             <v-row>
               <v-card
                 class="mx-3 mb-4"
-                max-width="190"
+                max-width="185"
                 max-height="400"
                 elevation="3"
                 :style="{'text-align':'center'}"
@@ -65,7 +65,7 @@
                 </v-img>
                 <div style="text-align: center !important">
                   <v-card-title style="color: #112E4E; display: block !important; font-size: 14px; word-break: break-word; padding-bottom: 5px; line-height: 160%;">
-                    {{ book.judul }}
+                    {{ book.judul.length > 20 ? `${book.judul.substring(0, 20)}...` : book.judul }}
                   </v-card-title>
                 </div>
                 <v-card-text style="color: #7E7E7E; padding-top: 0px; font-size: 12px">
