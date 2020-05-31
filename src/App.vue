@@ -97,12 +97,13 @@
         solo-inverted
         hide-details
         prepend-inner-icon="mdi-magnify"
-        label="Cari Buku"
+        label="Cari buku berdasarkan judul"
         class="hidden-sm-and-down"
         v-model="keyCari"
         @keyup.enter.native="cariBuku"
-        append-icon="mdi-text-box-plus"
+        append-icon="mdi-text-box-search"
         @click:append="show_advanced = true; keyCariJudul = ''; dialog = true"
+        clearable
       ></v-text-field>
       <v-spacer></v-spacer>
     </v-app-bar>
@@ -136,7 +137,7 @@
     >
       <v-card>
         <v-card-title class="headerCari">
-          Cari Buku
+          {{show_advanced ? 'Pencarian Lanjutan' : 'Cari Buku'}}
         </v-card-title>
         <v-container>
           <v-row class="mx-2">
@@ -167,6 +168,7 @@
                     :disabled="!checkbox_isbn"
                     label="No. ISBN Buku"
                     v-model="value_isbn"
+                    clearable
                   ></v-text-field>
                 </v-row>
                 <v-row align="center">
@@ -179,6 +181,7 @@
                     :disabled="!checkbox_judul"
                     v-model="value_judul"
                     label="Judul Buku"
+                    clearable
                   ></v-text-field>
                 </v-row>
                 <v-row align="center">
@@ -191,6 +194,7 @@
                     :disabled="!checkbox_penerbit"
                     v-model="value_penerbit"
                     label="Penerbit Buku"
+                    clearable
                   ></v-text-field>
                 </v-row>
                 <v-row align="center">
@@ -203,6 +207,7 @@
                     :disabled="!checkbox_penulis"
                     v-model="value_penulis"
                     label="Penulis Buku"
+                    clearable
                   ></v-text-field>
                 </v-row>
               </div>
@@ -215,14 +220,14 @@
             text
             @click="keyCariJudul = ''; show_advanced = true"
           >
-            Advanced
+            Lanjutan
           </v-btn>
           <v-btn
             v-if="show_advanced == true"
             text
             @click="checkbox_isbn = false; checkbox_judul = false; checkbox_penerbit = false; checkbox_penulis = false;show_advanced = false"
           >
-            Normal
+            Kembali
           </v-btn>
           <v-spacer></v-spacer>
           <v-btn
