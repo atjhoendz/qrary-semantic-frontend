@@ -10,38 +10,36 @@
           <p>Dataset kosong, silahkan upload dataset terlebih dahulu di sini <a href="https://qrary-fuseki-service.herokuapp.com/" target="_blank">https://qrary-fuseki-service.herokuapp.com/</a></p>
           <a href="https://github.com/atjhoendz/qrary-semantic-frontend#upload-dataset" target="_blank">Bantuan</a>
         </div>
-        <v-row
+        <v-layout
+          row
+          wrap
           v-if="loading == true"
         >
-          <v-col
+          <v-flex
             v-for="i in 4"
             :key="i"
-            cols="6"
-            md="2"
           >
-            <v-row>
-              <v-skeleton-loader
+            <v-skeleton-loader
                 class="mx-3 mb-4"
-                width="190"
+                :width="windowWidth > 400 ? '180':'155'"
                 type="card, list-item"
                 elevation="3"
               ></v-skeleton-loader>
-            </v-row>
-          </v-col>
-        </v-row>
-        <v-row
+          </v-flex>
+        </v-layout>
+        <v-layout 
+          row 
+          wrap
           v-if="loading == false && error == false"
+          v-resize="onResize"
         >
-          <v-col
+          <v-flex
             v-for="book in books"
             :key="book.judul"
-            cols='6'
-            md='2'
           >
-            <v-row>
-              <v-card
-                class="mx-3 mb-4"
-                max-width="185"
+            <v-card
+                class="mx-3 mb-3"
+                :max-width="windowWidth > 400 ? '180':'155'"
                 max-height="400"
                 elevation="3"
                 :style="{'text-align':'center'}"
@@ -72,9 +70,8 @@
                   {{ book.penulis }}
                 </v-card-text>
               </v-card>
-            </v-row>
-          </v-col>
-        </v-row>
+          </v-flex>
+        </v-layout>
       </v-container>
 </template>
 
@@ -94,7 +91,8 @@ export default {
         message: '',
         snackbar: false,
         textHeader: 'Daftar Buku',
-        isKosong: false
+        isKosong: false,
+        windowWidth: 0
     }),
     computed: {
       bookState() {
@@ -110,9 +108,13 @@ export default {
       ]),
       gotoDetail(isbn) {
         this.$router.push({name:'details', params: {isbn: isbn}});
+      },
+      onResize(){
+        this.windowWidth = window.innerWidth;
       }
     },
     mounted() {
+      this.onResize();
       if ( !Object.keys(this.bookState).length ) {
         this.$axios
           .get('https://qrary-semantic-backend.herokuapp.com/api/books')
