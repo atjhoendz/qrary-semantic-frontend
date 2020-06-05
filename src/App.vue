@@ -313,22 +313,22 @@
       ...mapMutations([
         'searchResults'
       ]),
+      // fungsi mengambil data dari backend
       cariBuku(key) {
         if (this.$route.name != 'search') {
           return this.$router.push({name: 'search'});
         }
-
+        // endpoint backend beserta data yang ingin diambil
         let url = `https://qrary-semantic-backend.herokuapp.com/api/books?judul=${key ? key.trim() : ''}${this.value_judul ? this.value_judul.trim() : ''}${this.value_isbn ? '&isbn='+this.value_isbn.trim() : ''}${this.value_penerbit ? '&penerbit='+this.value_penerbit.trim() : ''}${this.value_penulis ? '&penulis='+this.value_penulis.trim() : ''}`;
 
         this.loading = true;
-        this.$axios
+        this.$axios // proses pengambilan data
           .get(url)
           .then(response => {
             // Set State
             this.searchResults(response.data.data);
             this.loading = false;
-          });
-          
+          }); 
       }
     }
   }
